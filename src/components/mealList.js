@@ -12,14 +12,17 @@ class MealList extends Component {
          {
           day: 1,
           cals: 100,
+          goal:2500,
         },
         {
           day:2,
           cals:200,
+          goal:2500,
         },
         {
            day: 3,
-           cals:150,
+           cals:2500,
+           goal:2500,
         }
       ]
     };
@@ -28,18 +31,20 @@ class MealList extends Component {
   render() {
     const listItems = _.map(this.state.meals, meal => {
       return (
-        <Link to={`/item/${meal.day}`}>
+        <Link key={meal.day} to={`/item/${meal.day}`}>
           <MealListItem
             key={meal.day}
             day={meal.day}
             cals={meal.cals}
+            goal={meal.goal}
           />
          </Link>
       );
     });
 
     return (
-      <div>Meal List
+      <div>
+        <h3>Meal List</h3>
         <ul className="list-group">
           {listItems}
         </ul>
